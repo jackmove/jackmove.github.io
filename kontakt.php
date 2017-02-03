@@ -73,19 +73,19 @@ $okay = 'Vielen Dank für Ihre Nachricht, wir werden Sie demnächst bearbeiten!<
     #######################################
 
 		$message = '<span style="color:red">' . $errormessage[0];
-		
+
     if($name==''){$message .= $errormessage[1]; $fehler = 1;}
-		
+
     if(!ereg("^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+([a-zA-Z]{2,6})$", $email)) {
 			$message .= $errormessage[2]; $fehler = 1;}
-		
+
     if($betreff==''){$message .= $errormessage[3]; $fehler = 1;}
-		
+
     if($nachricht==''){$message .= $errormessage[4];	$fehler = 1;}
-		
+
     if($_POST['code']=="" || strtolower($_POST['code'])!=$_SESSION['captcha_code']){
 			$message .= $errormessage[5]; $fehler = 1;}
-    
+
     if(ehi_check()!=0){$message .= $errormessage[6];  $fehler = 1;}
 
 		$message .= '</span><br /><br />';
@@ -93,26 +93,26 @@ $okay = 'Vielen Dank für Ihre Nachricht, wir werden Sie demnächst bearbeiten!<
 		#######################################
 
     #######################################
-        
+
         if(!isset($fehler)){
-			
+
         $email_nachricht  = "-- Kontakformularanfrage --\n\nBetreff: $betreff";
         $email_nachricht .= "\nName: $name\nE-Mailadresse: $email\nHomepage: $homepage\n\n";
         $email_nachricht .= "Nachricht:\n$nachricht\n\nIP: $ip\nHost: $host\n";
         $email_nachricht .= "gesendet am $datum um $uhrzeit.";
-			 
+
         // Mail senden
         @mail($ihre_emailadresse, $email_betreffzeile, $email_nachricht, $email_absender);
-			
+
         //Variablen resetten
         $name       = '';
 			  $betreff    = '';
 			  $email      = '';
 			  $nachricht  = '';
 		    $homepage   = '';
-			
+
         $meldung=$okay;
-  
+
 		    } else {
 		    $meldung=$message;
 		    }
@@ -159,9 +159,9 @@ document.getElementById("captcha").src= src;
 
   <div id="menu">
     <ul>
-      <li class="current_page_item"><a href="http://www.wohnen-in-md.de">Start</a></li>
-      <li><a href="http://www.wohnen-in-md.de/bilder.html">Bilder</a></li>
-      <li><a href="http://www.wohnen-in-md.de/kontakt.php">Kontakt</a></li>
+      <li class="current_page_item"><a href="index.html">Start</a></li>
+      <li><a href="bilder.html">Bilder</a></li>
+      <li><a href="kontakt.php">Kontakt</a></li>
 
     </ul>
   </div>
@@ -250,9 +250,9 @@ document.getElementById("captcha").src= src;
       <li>
         <h2>Men&uuml;</h2>
         <ul>
-           <li><a href="http://www.wohnen-in-md.de">Start</a></li>
-           <li><a href="http://www.wohnen-in-md.de/bilder.html">Bilder</a></li>
-           <li><a href="http://www.wohnen-in-md.de/kontakt.php">Kontakt</a></li>
+           <li><a href="index.html">Start</a></li>
+           <li><a href="bilder.html">Bilder</a></li>
+           <li><a href="kontakt.php">Kontakt</a></li>
         </ul>
       </li>
 
@@ -261,7 +261,7 @@ document.getElementById("captcha").src= src;
 </div>
 <div style="clear: both;">&nbsp;</div>
 <div id="footer">
-  <p>&copy;2009 All Rights Reserved. | <a href="http://www.wohnen-in-md.de/impressum.html" rel="nofollow">Impressum</a> &nbsp;&bull;&nbsp; Design by <a target="_blank" href="http://www.freecsstemplates.org/">Free CSS Templates</a></p>
+  <p>&copy;2009 All Rights Reserved. | <a href="impressum.html" rel="nofollow">Impressum</a> &nbsp;&bull;&nbsp; Design by <a target="_blank" href="http://www.freecsstemplates.org/">Free CSS Templates</a></p>
 </div>
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
@@ -274,9 +274,9 @@ pageTracker._trackPageview();
 } catch(err) {}</script>
 </body>
 </html>
-<?php 
+<?php
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 function check($var){
@@ -294,9 +294,9 @@ $pos = strpos(strtolower($val), 'bcc:');          if($pos !== false){$achtung++;
 $pos = strpos(strtolower($val), 'bcc');           if($pos !== false){$achtung++;}
 } //endforeach
 return $achtung;  // wenn Null dann Alles Okay
-} 
+}
 
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ?>
